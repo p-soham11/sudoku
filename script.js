@@ -26,7 +26,12 @@ function FillBoard(board) {
 let GetPuzzle = document.getElementById('GetPuzzle')
 let SolvePuzzle = document.getElementById('SolvePuzzle')
 
+window.onload = function(){
+	SolvePuzzle.disabled = true;
+}
+
 GetPuzzle.onclick = function () {
+	
 	var xhrRequest = new XMLHttpRequest()
 	xhrRequest.onload = function () {
 		var response = JSON.parse(xhrRequest.response)
@@ -35,6 +40,7 @@ GetPuzzle.onclick = function () {
 		FillBoard(board)
 	}
 	xhrRequest.open('get', 'https://sugoku.onrender.com/board?difficulty=easy')
+	SolvePuzzle.disabled = false;
 	//we can change the difficulty of the puzzle the allowed values of difficulty are easy, medium, hard and random
 	xhrRequest.send()
 }

@@ -22,7 +22,7 @@
     border-radius: 20px;
     width: 100%;
     height: 100%;
-    background-color: #F4AC32;
+    background-color: #071e3d;
 }
 
 #name{
@@ -31,6 +31,7 @@
     align-items: center;
     font-size: 64px;
     font-weight: bold;
+    color: #e2f3f5;
 }
 
 .Heading{
@@ -106,6 +107,12 @@ button{
     transition: 0.3s;
     color: #eaeef2;
     cursor: pointer;
+}
+
+#SolvePuzzle:disabled{
+    background-color:#abdcd3;
+    cursor: not-allowed;
+    color: #eaeef2;
 }
 
 .box1{
