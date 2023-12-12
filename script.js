@@ -32,17 +32,25 @@ window.onload = function(){
 
 GetPuzzle.onclick = function () {
 	
-	var xhrRequest = new XMLHttpRequest()
-	xhrRequest.onload = function () {
-		var response = JSON.parse(xhrRequest.response)
-		console.log(response)
-		board = response.board
-		FillBoard(board)
-	}
-	xhrRequest.open('get', 'https://sugoku.onrender.com/board?difficulty=easy')
+	// var xhrRequest = new XMLHttpRequest()
+	// xhrRequest.onload = function () {
+	// 	var response = JSON.parse(xhrRequest.response)
+	// 	console.log(response)
+	// 	board = response.board
+	// 	FillBoard(board)
+	// }
+	// xhrRequest.open('get', 'https://sugoku.onrender.com/board?difficulty=easy')
+	// SolvePuzzle.disabled = false;
+	// //we can change the difficulty of the puzzle the allowed values of difficulty are easy, medium, hard and random
+	// xhrRequest.send()
+	fetch('https://sugoku.onrender.com/board?difficulty=easy')
+	.then(res => res.json())
+	.then(data => {
+		board = data.board;
+    	FillBoard(board);
+	})
+	.catch(err => console.error('Error while fetching data : ', err));
 	SolvePuzzle.disabled = false;
-	//we can change the difficulty of the puzzle the allowed values of difficulty are easy, medium, hard and random
-	xhrRequest.send()
 }
 
 SolvePuzzle.onclick = () => {
